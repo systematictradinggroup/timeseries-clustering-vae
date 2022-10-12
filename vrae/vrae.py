@@ -232,9 +232,9 @@ class VRAE(BaseEstimator, nn.Module):
             raise ValueError('Not a recognized optimizer')
 
         if loss == 'SmoothL1Loss':
-            self.loss_fn = nn.SmoothL1Loss(size_average=False)
+            self.loss_fn = nn.SmoothL1Loss(reduction='sum')
         elif loss == 'MSELoss':
-            self.loss_fn = nn.MSELoss(size_average=False)
+            self.loss_fn = nn.MSELoss(reduction='sum')
 
     def __repr__(self):
         return """VRAE(n_epochs={n_epochs},batch_size={batch_size},cuda={cuda})""".format(

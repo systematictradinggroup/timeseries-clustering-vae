@@ -118,5 +118,11 @@ def open_data(direc, ratio_train=0.8, dataset="ECG5000"):
 
     ind_cut = int(ratio_train * N)
     ind = np.random.permutation(N)
-    return data[ind[:ind_cut], 1:, :], data[ind[ind_cut:], 1:, :], data[ind[:ind_cut], 0, :], data[ind[ind_cut:], 0, :]
+    
+    input_trainset = data[ind[:ind_cut], 1:, :]
+    label_trainset = data[ind[ind_cut:], 1:, :]
+    input_validationset =  data[ind[:ind_cut], 0, :]
+    label_validationset = data[ind[ind_cut:], 0, :]
+
+    return input_trainset, label_trainset, input_validationset, label_validationset
 
